@@ -1,0 +1,90 @@
+{% contents type="donation"  limit="2" category="3" %}
+{{ 'donation-layout' | layoutClass }}
+<div class="container">
+	<p class="title fw-bold text-center raise">{{ "So far we raised" | t }}</p>
+	<p class="text-center secondary count-up fw-bolder">
+		<span id="count-up">{{'donation.money' | setting('#')}}
+		</span>
+		<span>/ 100,000 $</span>
+	</p>
+	<p class="title text-center fw-bold contribute">{{"Want to contribute to our cause?" | t}}</p>
+
+	<div class="mt-5">
+		<div class="row global">
+			<div class="d-flex justify-content-around align-items-start flex-wrap">
+				{% for content in contents %}
+					<div class="col-12 col-md-3 mb-5 gray-text">
+						<div class="img-don d-flex flex-column justify-content-center align-items-center">
+							<div>
+								<a target="_blank" href="{{ content.attrs.link }}">
+									<img class="hover-img" src="{{ content.attrs.image.url }}"/>
+								</a>
+							</div>
+							<div>
+								<p class="text fw-bold text-center mt-2">{{ content.local.title | nl2br }}</p>
+								<div style="font-weight: 600;">
+									<web-view blocks="{{ content.local.blocks | json }}"></web-view>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+
+	<p class="title text-center fw-bold help-title">{{"You can help lots of people by donating little" | t}}</p>
+
+
+	{% contents type="donation" limit="3" category="1" %}
+
+	<div>
+		<div class="row help">
+			<div class="d-flex justify-content-between align-items-start flex-wrap">
+				{% for content in contents %}
+					<div class="col-12 col-md-3  mb-5">
+						<div class="help-img d-flex  flex-column justify-content-center align-items-center">
+							<div>
+								<img src="{{ content.attrs.image.url }}"/>
+							</div>
+							<div>
+								<p class="text fw-bold text-center mt-2">{{ content.local.title | nl2br }}</p>
+								<div data-aos="zoom-in" style="font-weight: 600;">
+									<web-view blocks="{{ content.local.blocks | json }}"></web-view>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	{% endcontents %}
+	<div class="register">
+		<div class="blue_container">
+			<div class="d-flex  flex-column justify-content-center align-items-center">
+				<div class="title">{{"Become a Volunteer with us!" | t}}</div>
+				<a href="{{'donation.register' | setting('#')}}" target="_blank" class="button mt-5">{{"Register Now" | t}}</a>
+			</div>
+		</div>
+
+
+		<p class="text text-center fund">Fundraising Campaign's Newsletter</p>
+
+		<div class="email-container mb-5">
+			{% if language() == "en" %}
+				<input type="email" class="email-input" placeholder="Enter E-mail Address">
+				<button class="email-button">Submit</button>
+			{% else %}
+				<button class="email-button">Submit</button>
+				<input type="email" class="email-input" placeholder="Enter E-mail Address">
+			{% endif %}
+
+		</div>
+	</div>
+</div>
+{% endcontents %}
+<script>
+	window.donation = {{ "donation.money" | setting }}
+</script>

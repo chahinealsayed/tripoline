@@ -1,0 +1,315 @@
+{{ "Home" | title }}
+{{ seo('home-' ~ language(), this.title, "", [], true) }}
+
+
+{{ 'safety-layout' | layoutClass }}
+<section class='section-1'>
+	<div class='container'>
+		{% contents type="default.safety" %}
+		{% for content in contents %}
+			<div class='row' id="link-{{loop.index}}">
+				<div class='col col-12 col-md-6' data-aos="fade-up" data-aos-duration="1000">
+					{% if loop.first %}
+						<div class='img d-flex justify-content-end'>
+							<img src='{{ content.attrs.image.url}}'>
+						</div>
+					{% else %}
+						<div class='img'>
+							<img src='{{ content.attrs.image.url}}'>
+						</div>
+
+					{% endif %}
+				</div>
+				<div class='col col-12 col-md-6' data-aos="fade-up" data-aos-duration="1000">
+					<div class='cont'>
+						<h1>{{ content.local.title}}</h1>
+						<p>{{ content.local.attrs.description}}</p>
+						{% if loop.first %}
+							<a href="{{'donation.finance' | setting('#')}}" target="_blank" class="financing-btn scroll-to">{{"Support Now" | t}}
+								<web-icon path="mdiDotsVertical"></web-icon>
+							</a>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+		{% endcontents %}
+	</div>
+</section>
+
+{% if isMobile() or isTablet() %}
+	<section class="section-2" data-aos="fade-up" data-aos-duration="1000">
+		<div class="swiper">
+			<div class="swiper-wrapper">
+				<div class="swiper-slide">
+					<img src='public\images\sdg\4.svg'>
+				</div>
+				<div class="swiper-slide">
+					<img src='public\images\sdg\8.svg'>
+				</div>
+				<div class="swiper-slide">
+					<img src='public\images\sdg\9.svg'>
+				</div>
+				<div class="swiper-slide">
+					<img src='public\images\sdg\10.svg'>
+				</div>
+				<div class="swiper-slide">
+					<img src='public\images\sdg\11.svg'>
+				</div>
+				<div class="swiper-slide">
+					<img src='public\images\sdg\13.svg'>
+				</div>
+				<div class="swiper-slide">
+					<img src='public\images\sdg\17.svg'>
+				</div>
+			</div>
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+		</div>
+	</section>
+	<section class="section-5" data-aos="fade-up" data-aos-duration="1000">
+		<div class="mb-5 container">
+			<p class="title mb-5 text-center">{{ "Our contribution towards the goals of sustainable development"| t }}</p>
+			<div class="d-flex align-items-center justify-content-center">
+				<a class="financing-btn" href="/Contribution">
+					{{ "Read More" | t }}
+					<web-icon path="mdiArrow{{ language() == 'ar' ? 'Left' : 'Right' }}"></web-icon>
+				</a>
+			</div>
+		</div>
+	</section>
+{% else %}
+	<section class="section-2">
+		<div class="container" data-aos="fade-up" data-aos-duration="1000">
+			<div class="row-14">
+				<div class="col-7 col-md-4 col-lg-2">
+					<img src='public\images\sdg\4.svg'>
+				</div>
+				<div class="col-7 col-md-4 col-lg-2">
+					<img src='public\images\sdg\8.svg'>
+				</div>
+				<div class="col-7 col-md-4 col-lg-2">
+					<img src='public\images\sdg\9.svg'>
+				</div>
+				<div class="col-7 col-md-4 col-lg-2">
+					<img src='public\images\sdg\10.svg'>
+				</div>
+				<div class="col-7 col-md-4 col-lg-2">
+					<img src='public\images\sdg\11.svg'>
+				</div>
+				<div class="col-7 col-md-4 col-lg-2">
+					<img src='public\images\sdg\13.svg'>
+				</div>
+				<div class="col-7 col-md-4 col-lg-2">
+					<img src='public\images\sdg\17.svg'>
+				</div>
+			</div>
+		</div>
+	</section>
+	{% contents type="contribution"  %}
+	<section class="section-5 mt-5" data-aos="fade-up" data-aos-duration="1000">
+		<div class="mb-5 container">
+			<p class="mb-5 text-center">{{ "Our contribution towards the goals of sustainable development"| t }}</p>
+			<div class="d-flex align-items-center justify-content-center">
+				<a class="financing-btn" href="/Contribution">
+					{{ "Read More" | t }}
+					<web-icon path="mdiArrow{{ language() == 'ar' ? 'Left' : 'Right' }}"></web-icon>
+				</a>
+			</div>
+		</div>
+	</section>
+	{% endcontents %}
+{% endif %}
+
+
+<section class="vision-section" id="vision">
+	{{ 'vision-layout' | layoutClass }}
+	{% content "cms.contents.default.vision" %}
+	<div class="container">
+		<div class="section-3 mb-5">
+			<div>
+				<p class="title" style="font-weight: bold;">
+					{{ content.model.local.title| nl2br}}
+				</p>
+			</div>
+			<div>
+				<img src="{{ content.model.attrs.image.url }}"/>
+			</div>
+			<div class="text-center mt-5">{{ content.model.local.excerpt| nl2br}}</div>
+		</div>
+	</div>
+	{% endcontent %}
+</section>
+{% contents type="value" %}
+{% if isMobile() or isTablet() %}
+	<section id="value" class="value value-section" style="background:#F5F5F5;" data-aos="zoom-in-up">
+		<p class="text text-center pt-5" style="font-weight: bold;">{{ "Values" | t }}</p>
+		<div class="swiper">
+			<div class="swiper-wrapper">
+				{% for content in contents %}
+					<div class="swiper-slide">
+						<div class="d-flex flex-column justify-content-center align-items-center">
+							<img src="{{ content.attrs.image.url }}"/>
+							<p class="text text-center">{{ content.local.title }}</p>
+							<web-view blocks="{{ content.local.blocks | json }}"></web-view>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+		</div>
+	</section>
+{% else %}
+	<section id="value" class="value value-section" style="background:#F5F5F5;">
+		<div class="container" data-aos="zoom-in-up">
+			<div class="row">
+				<p class="title text-center mb-5 mt-5" style="font-weight: bold;">{{ "Values" | t }}</p>
+				<div class="d-flex justify-content-between align-items-start flex-wrap">
+					{% for content in contents %}
+
+						<div class="col-12 col-md-2  mb-5">
+							<div class="d-flex  flex-column justify-content-center align-items-center">
+								<div>
+									<img src="{{ content.attrs.image.url }}"/>
+								</div>
+								<div>
+									<p class="text text-center">{{ content.local.title | nl2br }}</p>
+									<div>
+										<web-view blocks="{{ content.local.blocks | json }}"></web-view>
+									</div>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</section>
+{% endif %}
+{% endcontents %}
+
+{% content "cms.contents.default.services" %}
+<section class="section-4 mt-5" id="services">
+	<div class="container" data-aos="zoom-in-up">
+		<div class='row'>
+			<div class='col col-12 col-md-6'>
+				<div class='cont'>
+					<h1 class="title" style="font-weight: bold;">{{ content.model.local.title}}</h1>
+					<p>{{ content.model.local.attrs.description | nl2br}}</p>
+				</div>
+			</div>
+			<div class='col col-12 col-md-6'>
+				<div class='img'>
+					<img src='{{ content.model.attrs.image.url}}'>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+{% endcontent %}
+{% contents type="traks" %}
+{% if isMobile() or isTablet() %}
+	<section style="background:#F5F5F5;" id="traks" class="tracks">
+		<p class="text text-center pt-5" style="font-weight: bold;">{{ "Tracks" | t }}</p>
+		<div class="swiper" data-aos="fade-up" data-aos-duration="1000">
+			<div class="swiper-wrapper">
+				{% for content in contents %}
+					<div class="swiper-slide">
+						<div class="d-flex flex-column justify-content-center align-items-center">
+							<img class="" src="{{ content.attrs.image.url }}"/>
+							<web-view blocks="{{ content.local.blocks | json }}"></web-view>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+{% else %}
+	<section style="background:#F5F5F5;" id="traks" class="tracks">
+		<div class="container" data-aos="fade-up" data-aos-duration="1000">
+			<div class="row">
+				<p class="title text-center mb-5 mt-5" style="font-weight: bold;">{{ "Tracks" | t }}</p>
+				<div class="d-flex justify-content-between align-items-start flex-wrap">
+					{% for content in contents %}
+						<div class="col-12 col-md-3  mb-5">
+							<div class="d-flex  flex-column justify-content-center align-items-center">
+								<div>
+									<img src="{{ content.attrs.image.url }}"/>
+								</div>
+								<div>
+									<div>
+										<web-view blocks="{{ content.local.blocks | json }}"></web-view>
+									</div>
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</section>
+{% endif %}
+{% endcontents %}
+{% contents type="lines"  %}
+{% if isMobile() or isTablet() %}
+	<section id="line" class="lines" data-aos="fade-up" data-aos-duration="1000">
+		<p class="text text-center pt-5" style="font-weight: bold;">{{ "Lines" | t }}</p>
+		<div class="swiper">
+			<div class="swiper-wrapper">
+				{% for content in contents %}
+					<div class="swiper-slide">
+						<div class="d-flex flex-column justify-content-center align-items-center">
+							<img src="public\images\new_rout.svg"/>
+							<p class="text text-center">{{ content.local.title }}</p>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+			<div class="swiper-button-prev"></div>
+			<div class="swiper-button-next"></div>
+		</div>
+		<div class="d-flex align-items-center justify-content-center mb-5">
+			<a class="financing-btn" href="/Lines">
+				{{ "Read More" | t }}
+				<web-icon path="mdiArrow{{ language() == 'ar' ? 'Left' : 'Right' }}"></web-icon>
+
+			</a>
+		</div>
+	</section>
+{% else %}
+	<section id="line" class="lines">
+		<div class="container mb-5" data-aos="fade-up" data-aos-duration="1000">
+			<div>
+				<div class="row">
+					<p class="title text-center mb-5 mt-5" style="font-weight: bold;">{{ "Lines" | t }}</p>
+					<div class="d-flex justify-content-between align-items-start flex-wrap">
+						{% for content in contents %}
+							<div class="col-12 col-md-3  mb-5">
+								<div class="d-flex  flex-column justify-content-center align-items-center">
+									<div>
+										<img src="public\images\new_rout.svg"/>
+									</div>
+									<div>
+										<p class="text text-center">{{ content.local.title | nl2br }}</p>
+										<div>
+											<web-view blocks="{{ content.local.blocks | json }}"></web-view>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+					<div class="d-flex align-items-center justify-content-center">
+						<a class="financing-btn" href="/Lines">
+							{{ "Read More" | t }}
+							<web-icon path="mdiArrow{{ language() == 'ar' ? 'Left' : 'Right' }}"></web-icon>
+
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endif %}
+{% endcontents %}

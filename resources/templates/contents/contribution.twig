@@ -1,0 +1,92 @@
+{{ 'contribution-layout' | layoutClass }}
+
+
+{% contents type="contribution" sort='position' %}
+{% if isMobile() or isTablet() %}
+	<div class="container">
+		<div class="row">
+			{% for content in contents %}
+				<div data-aos="fade-down" class="col-md-6 text-center">
+					<div class="content-container1">
+						<p class="text mt-5 fw-bold" style="text-align:center; color:#{{content.attrs.color}}">{{ content.local.title | nl2br }}</p>
+						<div>
+							<p class="description">{{ content.local.attrs.description}}</p>
+						</div>
+					</div>
+				</div>
+				<div data-aos="flip-up" class="col-md-6 text-center mobile-border" style="display: flex; justify-content: center; align-items: center;">
+					<div>
+						<img class="sdg mb-5" src="{{ content.attrs.image.url }}" alt="Image"/>
+						{% if not loop.last %}
+							<img width="100%" src="public\images\horizontal.svg" alt="">
+						{% endif %}
+
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+{% else %}
+	<div class="container">
+		<div class="row  mt-5 mb-5">
+			{% for content in contents %}
+				{% if loop.index is odd %}
+					<div data-aos="fade-up" class="col-md-5 text-center" style="display: flex; justify-content: center; align-items: center;margin-bottom:4rem;">
+						<div>
+							<img class="sdg" src="{{ content.attrs.image.url }}" alt="Image"/>
+						</div>
+					</div>
+					<div class="col-md-2 d-flex justify-content-center align-items-center flex-column">
+						<p class="text-center grayText text fw-bold">
+							SDG</p>
+						<p class="text-center title number">{{ content.attrs.number }}</p>
+						<img src="public\images\verticall.svg" alt="">
+					</div>
+					<div data-aos="fade-up" class="col-md-5 text-center column-space">
+						<div class="content-container1">
+							{% if language() == 'en' %}
+								<p class="text fw-bold" style="text-align:left; color:#{{content.attrs.color}}">{{ content.local.title | nl2br }}</p>
+							{% else %}
+								<p class="text fw-bold" style="text-align:right; color:#{{content.attrs.color}}">{{ content.local.title | nl2br }}</p>
+							{% endif %}
+							<div>
+								<p class="description">{{ content.local.attrs.description}}</p>
+								<div>
+									<img width="100%" src="public\images\horizontal.svg" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+				{% else %}
+					<div data-aos="fade-up" class="col-md-5 text-center column-space">
+						<div class="content-container1">
+							{% if language() == 'en' %}
+								<p class="text fw-bold" style="text-align:left; color:#{{content.attrs.color}}">{{ content.local.title | nl2br }}</p>
+							{% else %}
+								<p class="text fw-bold" style="text-align:right; color:#{{content.attrs.color}}">{{ content.local.title | nl2br }}</p>
+							{% endif %}
+							<div>
+								<p class="description">{{ content.local.attrs.description}}</p>
+								<div>
+									<img width="100%" src="public\images\horizontal.svg" alt="">
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-2 d-flex justify-content-center align-items-center flex-column">
+						<p class="text-center grayText text fw-bold">
+							SDG</p>
+						<p class="text-center title number">{{ content.attrs.number }}</p>
+						<img src="public\images\verticall.svg" alt="">
+					</div>
+					<div data-aos="fade-up" class="col-md-5 text-center" style="display: flex; justify-content: center; align-items: center; margin-bottom:4rem;">
+						<div>
+							<img class="sdg" src="{{ content.attrs.image.url }}" alt="Image"/>
+						</div>
+					</div>
+				{% endif %}
+			{% endfor %}
+		</div>
+	</div>
+{% endif %}
+{% endcontents %}

@@ -1,0 +1,180 @@
+.donation {
+  color: $primaryColor;
+  .secondary {
+    span {
+      font-size: 80px;
+
+      @media (max-width: 767px) {
+        font-size: 30px;
+        @include en() {
+          font-size: 25px;
+        }
+      }
+    }
+    @include ar() {
+      direction: ltr;
+    }
+  }
+  .fund {
+    font-size: 25px;
+    margin-bottom: 2rem;
+    @media (max-width: 767px) {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      font-size: 15px;
+    }
+  }
+
+  .raise {
+    margin-top: 3rem;
+    @media (max-width: 767px) {
+      margin-top: 0;
+    }
+  }
+
+  .contribute {
+    margin-top: 3rem;
+    @media (max-width: 767px) {
+      margin-top: 0;
+    }
+  }
+  .help-title {
+    margin-top: 10rem;
+    @media (max-width: 767px) {
+      margin-top: 0;
+    }
+  }
+  .title {
+    @media (max-width: 767px) {
+      font-size: $primaryFont;
+    }
+  }
+
+  .hover-img {
+    transition: transform 0.3s ease-in-out;
+    width: 135px;
+    height: 135px;
+    @media (max-width: 767px) {
+      width: 120px;
+      height: auto;
+    }
+  }
+
+  .hover-img:hover {
+    transform: scale(1.1);
+  }
+
+  .global {
+    margin-top: 6rem;
+
+    .img-don {
+      @media (max-width: 767px) {
+        margin-top: -2rem;
+      }
+    }
+  }
+
+  .help {
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+    .help-img {
+      img {
+        width: 150px;
+        height: 150px;
+      }
+
+      @media (max-width: 767px) {
+        margin-top: -2rem;
+      }
+    }
+  }
+
+  .gray-text {
+    p {
+      color: #878787;
+    }
+  }
+  .register {
+    .blue_container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background-color: #0b4d66;
+      padding: 20px;
+      width: 90%;
+      margin: auto;
+      height: 18rem;
+      border-radius: 25px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      margin-bottom: 3rem;
+
+      .title {
+        font-size: $secondary;
+        color: $white;
+
+        @media (max-width: 767px) {
+          font-size: 15px;
+        }
+      }
+
+      @media (max-width: 767px) {
+        height: 12rem;
+        margin-bottom: 0;
+      }
+    }
+    @media (max-width: 767px) {
+      margin-top: -6rem;
+    }
+  }
+
+  .text1 {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .button {
+    background-color: #fbdb13;
+    color: #0b4d66;
+    font-weight: bold;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+  }
+
+  .email-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  .email-input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    background: #d9d9d9;
+    width: 35%;
+
+    @include ar() {
+      direction: ltr;
+    }
+
+    @media (max-width: 767px) {
+      width: 12rem;
+    }
+  }
+
+  .email-button {
+    background-color: #0b4d66;
+    color: #fbdb13;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    font-size: 18px;
+    cursor: pointer;
+  }
+}

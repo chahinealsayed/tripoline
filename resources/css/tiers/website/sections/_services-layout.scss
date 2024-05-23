@@ -1,0 +1,23 @@
+.services {
+    color: $primaryColor;
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10rem;
+    margin-bottom: 2rem;
+
+
+    .text {
+        font-size: $primaryFont;
+    }
+
+    .title {
+        font-size: $secondaryFont;
+        text-align: right;
+    }
+
+    .sevices-img {
+        width: 540px;
+        height: 540px;
+    }
+}

@@ -1,0 +1,22 @@
+.about{
+    
+    padding-top: 10px;
+    display: flex;
+    align-items: center;
+    gap:20rem;
+    margin-bottom: 2rem ;
+
+    .text{
+            font-size: $primaryFont;
+       }
+
+    .title{
+            font-size: $secondaryFont;
+            text-align: right;
+       }
+
+    .about-img{
+        width: 500px;
+        height: 600px;
+    }
+}

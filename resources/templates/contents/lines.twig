@@ -1,0 +1,32 @@
+{{ 'lines-layout' | layoutClass }}
+{% contents type="lines" %}
+<section class="lines">
+	<div class="container">
+		<p class="title text-center line-title fw-bold">{{"Our current lines" | t}}</p>
+		<div class="d-flex justify-content-center">
+			<img src="public\images\new_rout.svg" class="img-fluid mx-auto mb-5" alt="Route Image"/>
+		</div>
+		<div class="row">
+			{% for content in contents %}
+				<div class="col-md-4 text-center border-lines mb-5 d-flex flex-column align-items-center">
+					<p class="text fw-bold">{{ content.local.title }}</p>
+					<img class="price-img" src="{{ content.attrs.image.url }}" class="img-fluid mx-auto my-3" alt="Route Image"/>
+					<p class="text price">{{ content.attrs.price }}</p>
+					<div class="d-flex  align-items-center h-100 flex-column">
+						{% for image in content.local.gallery %}
+							<div style="width: 100%;margin-bottom: 4rem;">
+								{% if not loop.last %}
+									<img class="time-image" src="{{ image.url }}"/>
+								{% else %}
+									<img class="time-image" style="width: 100%;" src="{{ image.url }}"/>
+								{% endif %}
+
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+{% endcontents %}

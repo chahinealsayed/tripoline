@@ -1,0 +1,26 @@
+$primaryColor: #0B4D66;
+$secondaryColor: #FBDB13;
+$minHeight: 94px;
+$primaryFont: 30px;
+$secondaryFont: 50px;
+
+.vision {
+    color: $primaryColor;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .message {
+        margin-bottom: 2rem;
+    }
+
+    .text {
+        font-size: $primaryFont;
+    }
+
+    .title {
+        font-size: $secondaryFont;
+        text-align: right;
+    }
+}

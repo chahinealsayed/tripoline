@@ -1,0 +1,21 @@
+.story {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // gap: 100px;
+
+    .personImage {
+        width: 450px;
+        height: 450px;
+    }
+
+    .text {
+        font-size: $primaryFont;
+    }
+
+    .title {
+        font-size: $secondaryFont;
+        text-align: right;
+    }
+
+}

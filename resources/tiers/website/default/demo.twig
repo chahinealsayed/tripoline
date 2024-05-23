@@ -1,0 +1,184 @@
+
+{% contents "cms.contents.default.safety" %}
+<div class="container">
+	<div class="row">
+		<div class="safety">
+			<div class="col-md-4">
+				<p class="title" style="text-align:left;">{{ content.model.local.excerpt}}</p>
+				<div>{{ content.html | raw }}</div>
+				<button class="custom-button">
+					{{ "About us" | t | link('#about') }}
+					{# <web-icon path="mdiDotsVertical"></web-icon> #}
+				</button>
+			</div>
+			<div class="col-md-4">
+				<img class="image" src="{{ content.model.attrs.image.url }}"/>
+			</div>
+		</div>
+	</div>
+</div>
+{% endcontent %}
+
+
+{{ 'story-layout' | layoutClass }}
+<div id="story">
+	{% content "cms.contents.default.story" %}
+	<div class="container">
+		<div class="row">
+			<div class="story">
+				<div class="col-md-6">
+					<p class="title text-center">{{ content.model.local.excerpt | nl2br}}</p>
+					<p>{{ content.html | raw }}</p>
+				</div>
+				<div class="col-md-1"></div>
+				<div class="col-md-4">
+					<img class="personImage" src="{{ content.model.attrs.image.url }}"/>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+{% endcontent %}
+
+
+{{ 'about-layout' | layoutClass }}
+{% content "cms.contents.default.about" %}
+<div id="about">
+	<div class="row">
+		<div class="about">
+			<div class="col-md-4">
+				<img class="about-img" src="{{ content.model.attrs.image.url }}"/>
+			</div>
+			<div class="col-md-4">
+				<p class="title text-center">{{ content.model.local.excerpt| nl2br}}</p>
+				<div>{{ content.html | raw }}</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endcontent %}
+
+
+<div class="container">
+	<div class="cards mb-5"></div>
+</div>
+
+
+{{ 'vision-layout' | layoutClass }}
+{% content "cms.contents.default.vision" %}
+<div id="vision">
+	<div class="row">
+		<div class="vision">
+			<div>
+				<p class="title">{{ content.model.local.title| nl2br}}</p>
+			</div>
+			<div>
+				<img class="message" src="{{ content.model.attrs.image.url }}"/>
+			</div>
+			<div>{{ content.html | raw }}</div>
+		</div>
+	</div>
+</div>
+{% endcontent %}
+
+{% contents type="value" %}
+<div id="value">
+	<div class="row" style="background:#F5F5F5;">
+		<p class="title text-center mb-5">{{ "Values" | t }}</p>
+		<div class="d-flex gap-5 justify-content-between align-items-start">
+			{% for content in contents %}
+				<div class="d-flex gap-5 flex-column justify-content-center align-items-center mb-5">
+					<div>
+						<img src="{{ content.attrs.image.url }}"/>
+					</div>
+					<div>
+						<p class="text text-center">{{ content.local.title| nl2br}}</p>
+						<div>
+							<web-view blocks="{{ content.local.blocks | json }}"></web-view>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+{% endcontents %}
+
+
+{{ 'sevices-layout' | layoutClass }}
+{% content "cms.contents.default.services" %}
+<div class="sevices" id="services">
+
+	<div class="row">
+		<div class="services">
+			<div class="col-md-4">
+				<img class="sevices-img" src="{{ content.model.attrs.image.url }}"/>
+			</div>
+			<div class="col-md-6">
+				<p class="title text-center">{{ content.model.local.title| nl2br}}</p>
+				<div>{{ content.html | raw }}</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endcontent %}
+
+
+{% contents type="traks"  %}
+<div id="traks">
+	<div class="row" style="background:#F5F5F5;">
+		<p class="title text-center mb-5">{{"Our Tracks" | t}}</p>
+		<div class="d-flex gap-5 justify-content-between align-items-start mb-5">
+			{% for content in contents %}
+				<div class="d-flex gap-5 flex-column justify-content-center align-items-center mb-5">
+					<div>
+						<img src="{{ content.attrs.image.url }}"/>
+					</div>
+					<div>
+						<div>
+							<web-view blocks="{{ content.local.blocks | json }}"></web-view>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>
+{% endcontents %}
+
+
+{% contents type="lines"  %}
+<div class="mb-5" id="line">
+	<div class="row">
+		<p class="title text-center mb-5">{{ "Our current lines" | t }}</p>
+		<div class="d-flex gap-5 justify-content-between align-items-center mb-5">
+			{% for content in contents %}
+				<div class="d-flex gap-5 flex-column justify-content-center align-items-center mb-5">
+					<img src="public\images\rout.png"/>
+					<p class="text">{{ content.local.title| nl2br}}</p>
+				</div>
+				{# <div>{{ content.html | raw }}</div> #}
+			{% endfor %}
+
+		</div>
+	</div>
+	<div class="d-flex align-items-center justify-content-center">
+		<button class="custom">
+			<web-icon path="mdiArrowLeft"></web-icon>
+			{{ "Read More" | t | link('/default/contents', {type: 'lines'}) }}</button>
+	</div>
+
+</div>
+{% endcontents %}
+
+
+{% contents type="contribution"  %}
+<div class="mb-5">
+	<p class="title mb-5 text-center">{{ "Our contribution towards the goals of sustainable development"| t }}</p>
+	<div class="d-flex align-items-center justify-content-center">
+		<button class="custom">
+			<web-icon path="mdiArrowLeft"></web-icon>
+			{{ "Read More" | t | link('/default/contents', {type: 'contribution'}) }}
+		</button>
+		{% endcontents %}

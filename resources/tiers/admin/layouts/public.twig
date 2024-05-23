@@ -1,0 +1,10 @@
+{% extends '@resources/tiers/_base.twig' %}
+{% block body %}
+	{{ use('app/widgets/PageLoader') }}
+	{{ 'public-layout' | layoutClass }}
+	{{ page_loader_widget() }}
+	{{ parent() }}
+{% endblock %}
+{% block content %}
+	{{ content | raw }}
+{% endblock %}

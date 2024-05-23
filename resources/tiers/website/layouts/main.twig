@@ -1,0 +1,187 @@
+{% extends '@resources/tiers/_base.twig' %}
+
+{% block html %}
+	{{ use('app/widgets/PageLoader') }}
+	{% set pageLoader = page_loader_widget() %}
+	{{ parent() }}
+{% endblock %}
+
+
+{% block body %}
+	{{ 'main-layout' | layoutClass }}
+	{{ pageLoader | raw }}
+	{{ parent() }}
+{% endblock %}
+
+{% block content %}
+	{% set list = [
+    {
+        'label': 'Our Story'| t,
+        'url': '#link-2'
+    },
+    {
+        'label': 'About Us'| t,
+        'url': '#link-3'
+    },
+	{
+        'label': 'Vision'| t,
+        'url': '#vision	'
+    },
+	{
+        'label': 'Values'| t,
+        'url': '#value'
+    },
+	{
+        'label': 'Services'| t,
+        'url': '#services'
+    },
+	{
+        'label': 'Tracks'| t,
+        'url': '#traks'
+    },
+	{
+        'label': 'Lines'| t,
+        'url': '#line'
+    },
+] %}
+	{% set externals = [
+    {
+        'label': 'Project Financing'| t,
+		'url': 'donation.finance' | setting('#'),
+    },
+] %}
+
+
+	{% if isMobile() or isTablet() %}
+		<div class="mobile-header">
+			{{'website/sidemenu' | vue({list : list, external:externals  })}}
+			<a href="{{ "/default/index" | url }}" class="mobileLogo"></a>
+			{% if languages() | length > 1 %}
+				<div class="languages">
+					{% for lang in languages() %}
+						{% if lang.value != language() %}
+							<a href="{{ url.current({language: lang.value}) }}" class="language language-{{ lang.value }}"></a>
+						{% endif %}
+					{% endfor %}
+				</div>
+			{% endif %}
+		</div>
+	{% else %}
+		<header class="header-wrapper">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-2 col-12">
+						<a href="{{ "/default/index" | url }}" class="logo"></a>
+					</div>
+					<div class="col-md-10">
+						<div class="inner">
+							<div class="top">
+								{% if languages() | length > 1 %}
+									<div class="languages">
+										{% for lang in languages() %}
+											{% if lang.value != language() %}
+												<a href="{{ url.current({language: lang.value}) }}" class="language language-{{ lang.value }}">
+													<span class="name">{{ lang.label | t('app',{}, lang.value) }}</span>
+												</a>
+											{% endif %}
+										{% endfor %}
+									</div>
+								{% endif %}
+							</div>
+							<div class="bottom">
+								<div class="menu">
+									<a href="#link-2" class="scroll-to">{{ 'Our Story' | t }}</a>
+									<a href="#link-3" class="scroll-to">{{ 'About Us' | t }}</a>
+									<a href="#vision" class="scroll-to">{{ 'Vision' | t }}</a>
+									<a href="#value" class="scroll-to">{{ 'Values' | t }}</a>
+									<a href="#services" class="scroll-to">{{ 'Services' | t }}</a>
+									<a href="#traks" class="scroll-to">{{ 'Tracks' | t }}</a>
+									{# {{"Lines" | t | link("/default/contents",{type:'Lines'}) }} #}
+									<a href="#line" class="scroll-to">{{ 'Lines' | t }}</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+	{% endif %}
+
+
+	<main class="body-wrapper">
+		{{ content | raw }}</main>
+	<footer class="footer-wrapper" id="project">
+		<div class="project">
+			<div class="suggustion text-center">
+				<div class="">
+					<p>{{"Support Tripoline now," | t}}</p>
+					<p>{{"Together we reach farther" | t }}</p>
+				</div>
+				<div class="mult_btn_cont">
+					{{ "Read More" | t | link('/default/contents', {type: 'donation'},{class:"transparent-btn text-center"}) }}
+					<a class="yellow-btn fw-bold" href="{{'donation.donate' | setting('#')}}" target="_blank">
+						{{"Donate Now" | t}}
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="copyright text-center">
+				<div class="cont">
+					<div>
+						<p>{{"For More Information" | t }}</p>
+					</div>
+					<div class="information">
+						{% if isMobile() %}
+							<span class="d-flex justify-content-center">
+								<web-icon class="phoneEmail d-flex  justify-content-center align-items-center" path="mdiMessageText"></web-icon>
+								<a target="_blank" class="text" href="mailto:{{'social.email' | setting('#')}}">{{'social.email' | setting('#')}}</a>
+							</span>
+							<span class="d-flex justify-content-center align-items-center">
+								<web-icon class="phoneEmail d-flex justify-content-center align-items-center" path="mdiWhatsapp"></web-icon>
+								<a target="_blank" class="text d-flex" href="https://wa.me/{{'social.phone' | setting('#')  | split(' ') | join('')}}">
+									{{'social.phone' | setting('#')}}</a>
+							</span>
+						{% else %}
+							<span class="d-flex justify-content-center align-items-top">
+								<web-icon class="phoneEmail" path="mdiMessageText"></web-icon>
+								<a target="_blank" class="text" href="mailto:{{'social.email' | setting('#')}}">{{'social.email' | setting('#')}}</a>
+							</span>
+							<span class="d-flex justify-content-center align-items-center">
+								<web-icon class="phoneEmail d-flex" path="mdiWhatsapp"></web-icon>
+								<a target="_blank" class="text" href="https://wa.me/{{'social.phone' | setting('#')  | split(' ') | join('')}}">
+									{{'social.phone' | setting('#')}}</a>
+							</span>
+						{% endif %}
+						<div class="social-link">
+							<a target="_blank" href="https://{{'social.instagram' | setting('#')}}">
+								<span class="instagram"></span>
+							</a>
+							<a target="_blank" href="https://{{'social.facebook' | setting('#')}}">
+								<span class="facebook"></span>
+							</a>
+							<span>
+								{{ "Tripoline.om" | t }}
+							</span>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="footer1 container">
+				<div>
+					<a target="_blank" href="https://codendot.com/">Powered by
+						<b>codendot</b>
+					</a>
+				</div>
+				<div>
+					<span>
+						©
+						{{"All rights reserved" | t}}
+						Tripoline 2023
+					</span>
+				</div>
+			</div>
+		</div>
+	</footer>
+</div>{% endblock %}

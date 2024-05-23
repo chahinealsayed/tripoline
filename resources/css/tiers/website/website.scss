@@ -1,0 +1,17 @@
+@import "@scss/startup";
+
+@layer layout {
+  @import "sections/main-layout";
+  @import "sections/safety-layout";
+  @import "sections/story-layout";
+  @import "sections/vision-layout";
+  @import "sections/about-layout";
+  @import "sections/services-layout";
+  @import "sections/lines-layout";
+  @import "sections/contribution-layout";
+  @import "sections/donation-layout";
+  @import "sections/header";
+  @import "sections/home";
+  @import "sections/sidemenu";
+  @import "sections/track-layout";
+}

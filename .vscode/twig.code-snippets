@@ -1,0 +1,20 @@
+{
+    "Contents List": {
+        "prefix": "contents",
+        "body": "{% contents type=\"\" sort=\"\" limit=\"\" category=\"\" %}...{% endcontents %}",
+        "description": "Contents Model Block", 
+        "scope": "twig"
+    },
+    "Content Widget": {
+        "prefix": "content",
+        "body": "{% content \"id or reference\" %}...{% endcontent %}",
+        "description": "Content Widget Block",
+        "scope": "twig"
+    },
+    "Categories List": {
+        "prefix": "categories",
+        "body": "{% categories type=\"\" sort=\"\" limit=\"\" %}...{% endcategories %}",
+        "description": "Categories Model Block",
+        "scope": "twig"
+    }
+}
